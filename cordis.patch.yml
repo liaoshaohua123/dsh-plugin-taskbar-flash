@@ -1,0 +1,3 @@
+- insert:
+    - id: taskbar-flash
+      name: 'dsh-plugin-taskbar-flash'

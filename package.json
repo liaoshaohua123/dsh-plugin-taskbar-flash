@@ -1,0 +1,63 @@
+{
+  "name": "dsh-plugin-taskbar-flash",
+  "version": "1.5.0",
+  "private": true,
+  "description": "Play a selectable or user-supplied reminder sound on DeepSeek Harness task completion, questions, or approvals, and flash the taskbar while it runs in the background.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Mr Bao",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "windows",
+    "notification",
+    "taskbar",
+    "sound"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liaoshaohua123/dsh-plugin-taskbar-flash.git"
+  },
+  "homepage": "https://github.com/liaoshaohua123/dsh-plugin-taskbar-flash#readme",
+  "bugs": {
+    "url": "https://github.com/liaoshaohua123/dsh-plugin-taskbar-flash/issues"
+  },
+  "os": [
+    "win32"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.png"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "flash-window.ps1",
+    "reminder.wav",
+    "sounds/*.wav",
+    "tools/generate-chime.py",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.png",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  }
+}

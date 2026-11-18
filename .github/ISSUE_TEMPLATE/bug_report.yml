@@ -1,0 +1,92 @@
+name: Bug report
+description: Something does not flash, does not play, or plays the wrong sound.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill in the environment rows — most reports here come down to the PowerShell version or to DSH running without a desktop window.
+
+  - type: input
+    id: dsh-version
+    attributes:
+      label: DSH version
+      description: Settings → About, or the version in the window title.
+      placeholder: "1.x.y"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 23H2, 22631.xxxx"
+    validations:
+      required: true
+
+  - type: input
+    id: pwsh
+    attributes:
+      label: PowerShell 7 version
+      description: Output of `pwsh -NoProfile -Command $PSVersionTable.PSVersion`.
+      placeholder: "7.4.x"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: What is wrong
+      options:
+        - No sound at all
+        - Sound plays but the taskbar does not flash
+        - Taskbar flashes but no sound
+        - Wrong or missing sound choice in the menus
+        - Custom sound does not appear / does not play
+        - The trim studio fails to save
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start a turn that needs approval
+        2. Switch to another window
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      placeholder: One line is enough.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Useful: the plugin's Host log lines, and the probe output
+        `pwsh -NoProfile -File flash-window.ps1 -HostPid <host pid> -ProbeOnly`.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I am running the DSH desktop app, not DSH in a browser tab.
+          required: true
+        - label: `pwsh.exe` is on PATH or installed under Program Files\PowerShell\7.
+          required: true
+        - label: I searched existing issues.
+          required: true
